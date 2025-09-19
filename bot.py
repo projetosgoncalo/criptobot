@@ -1,6 +1,6 @@
 import requests
 import pandas as pd
-import talib
+import ta
 from datetime import datetime
 import smtplib
 from email.mime.text import MIMEText
@@ -79,8 +79,8 @@ def analyze_coin(coin_id, symbol):
     closes = df["price"]
 
     try:
-        rsi = talib.RSI(closes, timeperiod=14)
-        sma20 = talib.SMA(closes, timeperiod=20)
+        rsi = ta.momentum.RSIIndicator(closes, window=14).rsi()
+        sma20 = closes.rolling(window=20).mean()
         last_rsi = rsi.iloc[-1]
         last_sma = sma20.iloc[-1]
         last_close = closes.iloc[-1]
