@@ -2,8 +2,8 @@ name: Run CriptoBot Daily
 
 on:
   schedule:
-    - cron: '00 14 * * *'  # Executa diariamente às 16:59 UTC
-  workflow_dispatch:        # Permite execução manual
+    - cron: '0 14 * * *'   # todos os dias às 15h Lisboa (14h UTC)
+  workflow_dispatch:
 
 jobs:
   run-bot:
